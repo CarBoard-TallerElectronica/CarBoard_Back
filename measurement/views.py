@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from .logic import logic_measure
 from django.shortcuts import HttpResponse
@@ -7,14 +8,20 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def measurement_list(request):
     if request.method == 'GET':
-        citas = logic_measure.get_measurements()
-        citas_dto = serializers.serialize('json', citas)
-    return HttpResponse(citas_dto, content_type='application/json')
+        measurements = logic_measure.get_measurements()
+        measurements_dto = serializers.serialize('json', measurements)
+    return HttpResponse(measurements_dto, content_type='application/json')
 
 
-#def measurement():
-
-
-#@csrf_exempt
-#def log_measurment(request):
-
+def measurement(request, pk):
+    if request.method == 'GET':
+        measuremet = logic_measure.get_measurement_ID(pk)
+        measuremet_dto = serializers.serialize('json', [measuremet])
+        return HttpResponse(measuremet_dto, content_type='application/json')
+    
+@csrf_exempt
+def log_measurment(request):
+    if request.method == 'POST':
+        measurement_dto = logic_measure.log_measurement(json.loads(request.body))
+        measuremet = serializers.serialize('json', [measurement_dto])
+        return HttpResponse(measuremet, content_type='application/json')
