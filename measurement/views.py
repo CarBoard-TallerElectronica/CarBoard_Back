@@ -10,7 +10,7 @@ def measurement_list(request):
     if request.method == 'GET':
         measurements = logic_measure.get_measurements()
         measurements_dto = serializers.serialize('json', measurements)
-    return HttpResponse(measurements_dto, content_type='application/json')
+        return HttpResponse(measurements_dto, content_type='application/json')
 
 
 def measurement(request, pk):

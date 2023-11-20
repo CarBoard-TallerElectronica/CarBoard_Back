@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('measurement/', include('measurement.urls'))
+    path('measurement/', include('measurement.urls')),
+    path('nodos/', include('nodo.urls'))
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
