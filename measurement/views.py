@@ -31,7 +31,7 @@ def measurementNodo(request, nd):
 def latestMeasurementNodo(request, nd):
     if request.method == 'GET':
         measurement = logic_measure.get_measurementsNodo(nd).latest('timestamp')
-        measurement_dto = measurement.fields
+        measurement_dto = serializers.serialize('json', [measurement])
         return HttpResponse(measurement_dto, content_type='application/json')
 
 @csrf_exempt
