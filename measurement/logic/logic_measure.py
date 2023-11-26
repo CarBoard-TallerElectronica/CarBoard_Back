@@ -21,12 +21,12 @@ def log_measurement(data):
         azimuth=data['azimuth'],
         positionDOP=data['positionDOP'],
         timestamp= datetime(
-            year= data['year'],
-            month= data['month'],
-            day= data['day'],
-            hour= data['hour'],
-            minute= data['minute'],
-            second= data['second']
+            year= data['time']['year'],
+            month= data['time']['month'],
+            day= data['time']['day'],
+            hour= data['time']['hour'],
+            minute= data['time']['minute'],
+            second= data['time']['second']
         )
     )
 
