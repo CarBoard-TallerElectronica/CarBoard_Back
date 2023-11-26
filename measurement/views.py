@@ -30,14 +30,9 @@ def measurementNodo(request, nd):
 
 def latestMeasurementNodo(request, nd):
     if request.method == 'GET':
-        measurements = logic_measure.get_measurementsNodo(nd)
-        if measurements and len(measurements) > 0:  # Check if measurements list is not empty
-            latest_measurement = measurements[len(measurements) - 1]  # Accessing the last element of the list
-            latest_fields = latest_measurement.get('fields', {})  # Extracting 'fields' data
-
-            return JsonResponse(latest_fields, safe=False)
-        else:
-            return JsonResponse({}, status=204)  # Return empty response with status 204 if measurements list is empty
+        measurement = logic_measure.get_measurementsNodo(nd).latest('timestamp')
+        measurement_dto = serializers.serialize('json', [measurement])
+        return HttpResponse(measurement_dto, content_type='application/json')
 
 @csrf_exempt
 def log_measurment(request):
