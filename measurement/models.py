@@ -11,4 +11,4 @@ class Measurement(models.Model):
     azimuth = models.FloatField(null=True, blank=True, default=None) 
     positionDOP = models.PositiveIntegerField(null=True, blank=True, default=None)
     weekTime = models.BigIntegerField(null=True, blank=True, default=None)
-    positionAccuracy = models.FloatField(null=True, blank=True, default=None)
+    positionAccuracy = models.PositiveBigIntegerField(null=True, blank=True, default=None)
