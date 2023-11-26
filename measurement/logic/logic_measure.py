@@ -20,7 +20,7 @@ def log_measurement(data):
                               positionDOP= data['positionDOP'],
                               weekTime= data['weekTime'],
                               positionAccuracy= data['positionAccuracy']),
-
+        
     measurement.save()
 
 
