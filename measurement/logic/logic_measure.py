@@ -1,5 +1,6 @@
 from ..models import Measurement
 from ..models import Nodo
+from ..models import Time
 
 def get_measurements():
     return Measurement.objects.all()
@@ -19,7 +20,13 @@ def log_measurement(data):
                               azimuth= data['azimuth'],
                               positionDOP= data['positionDOP'],
                               weekTime= data['weekTime'],
-                              positionAccuracy= data['positionAccuracy'])
+                              positionAccuracy= data['positionAccuracy'],
+                              time= Time(year=data['time']['year'], 
+                                         month=data['time']['month'], 
+                                         day=data['time']['day'], 
+                                         hour=data['time']['hour'], 
+                                         minute=data['time']['minute'], 
+                                         second=data['time']['second']))
 
     measurement.save()
 
