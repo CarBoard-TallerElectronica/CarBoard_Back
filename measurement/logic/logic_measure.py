@@ -19,8 +19,8 @@ def log_measurement(data):
                               azimuth= data['azimuth'],
                               positionDOP= data['positionDOP'],
                               weekTime= data['weekTime'],
-                              positionAccuracy= data['positionAccuracy']),
-        
+                              positionAccuracy= data['positionAccuracy'])
+
     measurement.save()
 
 
