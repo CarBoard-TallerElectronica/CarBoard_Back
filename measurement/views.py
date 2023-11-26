@@ -19,6 +19,13 @@ def measurement(request, pk):
         measuremet_dto = serializers.serialize('json', [measuremet])
         return HttpResponse(measuremet_dto, content_type='application/json')
     
+
+def measurementNodo(request, nd):
+    if request.method == 'GET':
+        measurements = logic_measure.get_measurementsNodo(nd)
+        measurements_dto = serializers.serialize('json', measurements)
+        return HttpResponse(measurements_dto, content_type='application/json')
+    
 @csrf_exempt
 def log_measurment(request):
     if request.method == 'POST':

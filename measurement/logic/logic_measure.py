@@ -9,6 +9,11 @@ def get_measurement_ID(id_pk):
     measurement = Measurement.objects.get(pk=id_pk)
     return measurement
 
+def get_measurementsNodo(id_nd):
+    nodo = Nodo.objects.get(pk=id_nd)
+    measurement = Measurement.objects.filter(nodo=nodo)
+    return measurement
+
 def log_measurement(data):
     nodo = Nodo.objects.get(pk=data['nodo'])
 
