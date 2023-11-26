@@ -19,8 +19,6 @@ def log_measurement(data):
                               aceleracion= data['aceleracion'],
                               azimuth= data['azimuth'],
                               positionDOP= data['positionDOP'],
-                              weekTime= data['weekTime'],
-                              positionAccuracy= data['positionAccuracy'],
                               time= Time(year=data['time']['year'], 
                                          month=data['time']['month'], 
                                          day=data['time']['day'], 
