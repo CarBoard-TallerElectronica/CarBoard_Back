@@ -29,9 +29,7 @@ def log_measurement(data):
             second= data['second']
         )
     )
-    
-    if measurement.timestamp_components_valid():
-        measurement.timestamp = measurement._create_timestamp()
+
 
     measurement.save()
 
