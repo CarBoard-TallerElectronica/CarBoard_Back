@@ -1,6 +1,5 @@
 from ..models import Measurement
 from ..models import Nodo
-from ..models import Time
 
 def get_measurements():
     return Measurement.objects.all()
